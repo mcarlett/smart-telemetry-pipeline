@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: build-run-
+spec:
+  pipelineRef:
+    name: build
+  params:
+    - name: repo-url
+      value: https://github.com/loop9x/smart-log-analyzer.git
+    - name: repo-revision
+      value: main
+    - name: app-path
+      value: correlator
+    - name: app-name
+      value: correlator
+    - name: namespace
+      value: slog-analyzer
+    - name: camel-image
+      value: "quay.io/mcarlett/camel-launcher:4.18.0"
+    - name: gav
+      value: "com.example:correlator:1.0.0"
+  workspaces:
+    - name: shared-workspace
+      persistentVolumeClaim:
+        claimName: maven-repo
