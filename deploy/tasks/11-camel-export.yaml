@@ -34,6 +34,8 @@ spec:
     - name: export
       image: $(params.camel-image)
       workingDir: $(workspaces.source.path)/$(params.app-path)
+      securityContext:
+        runAsUser: 0
       script: |
         #!/usr/bin/env bash
         set -euo pipefail
