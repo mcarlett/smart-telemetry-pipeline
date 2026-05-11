@@ -7,7 +7,7 @@ spec:
     - name: repo-url
       type: string
       description: Git repository URL
-      default: "https://github.com/loop9x/smart-log-analyzer.git"
+      default: "https://github.com/mcarlett/smart-telemetry-pipeline.git"
     - name: repo-revision
       type: string
       description: Git revision (branch, tag, or commit SHA)
@@ -39,7 +39,7 @@ spec:
     - name: deps
       type: string
       description: "Comma-separated list of additional dependencies to add during camel export (e.g. camel-observability-services)"
-      default: "camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
+      default: "camel-direct,camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
 
   workspaces:
     - name: shared-workspace

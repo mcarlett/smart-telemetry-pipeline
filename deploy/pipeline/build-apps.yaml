@@ -7,7 +7,7 @@ spec:
     - name: repo-url
       type: string
       description: Git repository URL
-      default: "https://github.com/loop9x/smart-log-analyzer.git"
+      default: "https://github.com/mcarlett/smart-telemetry-pipeline.git"
     - name: repo-revision
       type: string
       description: Git revision (branch, tag, or commit SHA)
@@ -48,7 +48,7 @@ spec:
 
               APP_NAME="correlator"
               GAV="com.example:correlator:1.0.0"
-              DEPS="camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
+              DEPS="camel-direct,camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
 
               RUN=$(cat <<EOF | oc create -f - -o jsonpath='{.metadata.name}'
               apiVersion: tekton.dev/v1
@@ -136,7 +136,7 @@ spec:
 
               APP_NAME="analyzer"
               GAV="com.example:analyzer:1.0.0"
-              DEPS="camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
+              DEPS="camel-direct,camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
 
               RUN=$(cat <<EOF | oc create -f - -o jsonpath='{.metadata.name}'
               apiVersion: tekton.dev/v1
@@ -224,7 +224,7 @@ spec:
 
               APP_NAME="ui-console"
               GAV="com.example:ui-console:1.0.0"
-              DEPS="camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
+              DEPS="camel-direct,camel-observability-services,mvn:org.apache.camel.quarkus:camel-quarkus-platform-http"
 
               RUN=$(cat <<EOF | oc create -f - -o jsonpath='{.metadata.name}'
               apiVersion: tekton.dev/v1

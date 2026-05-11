@@ -15,7 +15,7 @@ oc apply -f deploy/resources/configmaps/
 # Step 2: Deploy Kafka
 echo ""
 echo "--- Deploying Kafka ---"
-oc apply -f deploy/deploy/resources/otel-infra/kafka/kafka-sandbox.yaml
+oc apply -f deploy/resources/otel-infra/kafka/kafka-sandbox.yaml
 oc wait deployment/kafka --for=condition=Available --timeout=180s
 echo "Kafka ready"
 
@@ -32,7 +32,7 @@ echo "OTel Collector ready"
 # Step 4: Deploy Infinispan
 echo ""
 echo "--- Deploying Infinispan ---"
-oc apply -f deploy/deploy/resources/infinispan/infinispan-sandbox.yaml
+oc apply -f deploy/resources/infinispan/infinispan-sandbox.yaml
 oc wait deployment/infinispan --for=condition=Available --timeout=180s
 echo "Infinispan ready"
 
@@ -64,7 +64,7 @@ echo "Caches created"
 # Step 6: Deploy AMQ Broker
 echo ""
 echo "--- Deploying AMQ Broker ---"
-oc apply -f deploy/deploy/resources/amq-broker/artemis-sandbox.yaml
+oc apply -f deploy/resources/amq-broker/artemis-sandbox.yaml
 oc wait deployment/artemis --for=condition=Available --timeout=180s
 echo "AMQ Broker ready"
 
