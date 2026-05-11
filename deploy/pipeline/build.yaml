@@ -27,7 +27,7 @@ spec:
     - name: camel-image
       type: string
       description: Image containing the Camel CLI for export
-      default: "quay.io/mcarlett/camel-launcher:4.18.0"
+      default: "quay.io/mcarlett/camel-launcher:4.20.0"
     - name: gav
       type: string
       description: Maven groupId:artifactId:version for the exported project
@@ -35,7 +35,7 @@ spec:
     - name: runtime-version
       type: string
       description: "Quarkus version. If empty, uses the default from camel export"
-      default: "3.32.3"
+      default: ""
     - name: deps
       type: string
       description: "Comma-separated list of additional dependencies to add during camel export (e.g. camel-observability-services)"
