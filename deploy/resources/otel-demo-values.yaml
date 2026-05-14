@@ -1,0 +1,68 @@
+opentelemetry-collector:
+  enabled: false
+jaeger:
+  enabled: false
+prometheus:
+  enabled: false
+grafana:
+  enabled: false
+opensearch:
+  enabled: false
+
+components:
+  kafka:
+    enabled: false
+
+  # Non-essential services disabled to fit Developer Sandbox resource quotas
+  accounting:
+    enabled: false
+  ad:
+    enabled: false
+  email:
+    enabled: false
+  fraud-detection:
+    enabled: false
+  quote:
+    enabled: false
+  product-reviews:
+    enabled: false
+  image-provider:
+    enabled: false
+  llm:
+    enabled: false
+  postgresql:
+    enabled: false
+
+  # Envoy proxy requires specific UID that conflicts with OpenShift SCC
+  frontend-proxy:
+    enabled: false
+  load-generator:
+    env:
+      - name: LOCUST_HOST
+        value: http://frontend:8080
+  # Product catalog binary requires write access to its working directory
+  product-catalog:
+    enabled: false
+
+  # Remove fixed UIDs incompatible with OpenShift SCC
+  frontend:
+    securityContext:
+      runAsUser: null
+      runAsGroup: null
+      runAsNonRoot: null
+  payment:
+    securityContext:
+      runAsUser: null
+      runAsGroup: null
+      runAsNonRoot: null
+  valkey-cart:
+    securityContext:
+      runAsUser: null
+      runAsGroup: null
+      runAsNonRoot: null
+    command:
+      - valkey-server
+      - --save
+      - ""
+      - --appendonly
+      - "no"
